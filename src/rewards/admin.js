@@ -58,8 +58,8 @@ function getActiveRewards() {
                     // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unsafe-call
                     main.disabled = main.disabled === 'true';
                     // The next line calls a function in a module that has not been updated to TS yet
-                    // eslint-disable-next-line@typescript-eslint/no-unsafe-member-access
-                    // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+                    // eslint-disable-next-line max-len
+                    // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment,@typescript-eslint/no-unsafe-member-access
                     main.rewards = rewards;
                 }
                 // The next line calls a function in a module that has not been updated to TS yet
@@ -68,7 +68,8 @@ function getActiveRewards() {
             });
         }
         // The next line calls a function in a module that has not been updated to TS yet
-        // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unsafe-call
+        // eslint-disable-next-line max-len
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-assignment
         const rewardsList = yield db.getSetMembers('rewards:list');
         const rewardData = yield Promise.all(rewardsList.map(id => load(id)));
         return rewardData.filter(Boolean);
@@ -90,7 +91,8 @@ function saveConditions(data) {
         // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unsafe-call
         yield db.setAdd('conditions:active', conditions);
         // The next line calls a function in a module that has not been updated to TS yet
-        // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unsafe-call
+        // eslint-disable-next-line max-len
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-return
         yield Promise.all(Object.keys(rewardsPerCondition).map(c => db.setAdd(`condition:${c}:rewards`, rewardsPerCondition[c])));
     });
 }

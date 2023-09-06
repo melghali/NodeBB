@@ -50,8 +50,8 @@ async function getActiveRewards() {
             // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unsafe-call
             main.disabled = main.disabled === 'true';
             // The next line calls a function in a module that has not been updated to TS yet
-            // eslint-disable-next-line@typescript-eslint/no-unsafe-member-access
-            // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+            // eslint-disable-next-line max-len
+            // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment,@typescript-eslint/no-unsafe-member-access
             main.rewards = rewards;
         }
 
@@ -61,7 +61,8 @@ async function getActiveRewards() {
     }
 
     // The next line calls a function in a module that has not been updated to TS yet
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unsafe-call
+    // eslint-disable-next-line max-len
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-assignment
     const rewardsList: number[] = await db.getSetMembers('rewards:list');
     const rewardData = await Promise.all(rewardsList.map(id => load(id)));
     return rewardData.filter(Boolean);
@@ -85,7 +86,8 @@ async function saveConditions(data: Reward[]) {
     await db.setAdd('conditions:active', conditions);
 
     // The next line calls a function in a module that has not been updated to TS yet
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unsafe-call
+    // eslint-disable-next-line max-len
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-return
     await Promise.all(Object.keys(rewardsPerCondition).map(c => db.setAdd(`condition:${c}:rewards`, rewardsPerCondition[c])));
 }
 
