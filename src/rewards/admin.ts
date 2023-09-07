@@ -10,7 +10,6 @@ interface Reward {
     id: number;
     rewards: Record<string, string[]>;
     condition: string;
-    // Add other properties as needed
 }
 
 interface Rewards {
@@ -19,9 +18,9 @@ interface Rewards {
     get: () => Promise<{
         id: number;
         active: Reward[];
-        conditions: string[]; // Update with the actual type of conditions
-        conditionals: string[]; // Update with the actual type of conditionals
-        rewards: string[]; // Update with the actual type of rewards
+        conditions: string[];
+        conditionals: string[];
+        rewards: string[];
     }>;
 }
 
@@ -29,7 +28,6 @@ interface Main {
     id: number;
     disabled: boolean;
     rewards: Record<string, string[]>;
-    // Add other properties as needed
 }
 
 async function getActiveRewards() {

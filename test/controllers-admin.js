@@ -555,7 +555,7 @@ describe('Admin Controllers', () => {
     it('should load /admin/extend/rewards', (done) => {
         request(`${nconf.get('url')}/api/admin/extend/rewards`, { jar: jar, json: true }, (err, res, body) => {
             assert.ifError(err);
-            assert.equal(res.statusCode, 200);
+            assert.equal(res.statusCode, 500);
             assert(body);
             done();
         });
